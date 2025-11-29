@@ -12,6 +12,9 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   backdrop-filter: blur(5px);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .backdrop.show {
@@ -27,6 +30,10 @@
   max-width: 450px;
   padding: 1rem;
   box-sizing: border-box;
+  margin: auto;
+  max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 2rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (min-width: 1024px) {
@@ -126,6 +133,21 @@
 .envelopeContainer.show {
   transform: scale(1) translateY(0);
   opacity: 1;
+}
+
+/* iPhone safe area support */
+@supports (padding: max(0px)) {
+  .backdrop {
+    padding-top: max(env(safe-area-inset-top), 1rem);
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+    padding-left: max(env(safe-area-inset-left), 0);
+    padding-right: max(env(safe-area-inset-right), 0);
+  }
+  
+  .envelopeContainer {
+    margin-top: max(env(safe-area-inset-top), 1rem);
+    margin-bottom: max(env(safe-area-inset-bottom), 1rem);
+  }
 }
 
 .envelope {
@@ -476,7 +498,9 @@
   .envelopeContainer {
     max-width: 95%;
     padding: 0.5rem;
-    max-height: 90vh;
+    max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 1rem);
+    margin-top: max(env(safe-area-inset-top), 0.5rem);
+    margin-bottom: max(env(safe-area-inset-bottom), 0.5rem);
   }
 
   .envelope {
@@ -578,7 +602,9 @@
   .envelopeContainer {
     max-width: 98%;
     padding: 0.25rem;
-    max-height: 95vh;
+    max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 0.5rem);
+    margin-top: max(env(safe-area-inset-top), 0.25rem);
+    margin-bottom: max(env(safe-area-inset-bottom), 0.25rem);
   }
 
   .envelope {
