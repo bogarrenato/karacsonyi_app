@@ -42,10 +42,12 @@ export default function EnvelopeModal({ day, onClose }: EnvelopeModalProps) {
     >
       <div className={`${styles.envelopeContainer} ${isOpen ? styles.show : ''}`}>
         <div className={`${styles.envelope} ${isEnvelopeOpen ? styles.open : ''}`}>
-          <div className={styles.envelopeFront}>
-            <div className={styles.envelopeTop}></div>
-            <div className={styles.envelopeBody}></div>
-          </div>
+          {!isEnvelopeOpen && (
+            <div className={styles.envelopeFront}>
+              <div className={styles.envelopeTop}></div>
+              <div className={styles.envelopeBody}></div>
+            </div>
+          )}
           <div className={`${styles.envelopeBack} ${isEnvelopeOpen ? styles.show : ''}`}>
             <div className={styles.letter}>
               {day.specialType === 'letter' && (
