@@ -48,9 +48,27 @@ export default function EnvelopeModal({ day, onClose }: EnvelopeModalProps) {
           </div>
           <div className={`${styles.envelopeBack} ${isEnvelopeOpen ? styles.show : ''}`}>
             <div className={styles.letter}>
+              {day.specialType === 'letter' && (
+                <div className={styles.specialPopup}>
+                  <div className={styles.tinsel}>✨</div>
+                  <div className={styles.elf}>🧝</div>
+                  <div className={styles.speechBubble}>
+                    Vigyázz, a rossz gyerekek egy zsák szenet és virgácsot kapnak!
+                  </div>
+                </div>
+              )}
               <div className={styles.letterContent}>
                 <h2 className={styles.letterTitle}>{day.title}</h2>
                 <p className={styles.letterText}>{day.content}</p>
+                {day.imageUrl && (
+                  <div className={styles.imageContainer}>
+                    <img 
+                      src={day.imageUrl} 
+                      alt={day.title}
+                      className={styles.taskImage}
+                    />
+                  </div>
+                )}
                 {day.task && (
                   <div className={styles.task}>
                     <strong>Feladat:</strong> {day.task}
@@ -77,4 +95,6 @@ export default function EnvelopeModal({ day, onClose }: EnvelopeModalProps) {
     </div>
   )
 }
+
+
 

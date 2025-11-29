@@ -11,15 +11,17 @@ export default function Home() {
       <Snowflakes />
       <div className={styles.container}>
         <h1 className={styles.title}>
-          <span className={styles.titleCursive}>Advent</span>
-          <span className={styles.titleBold}>Naptár</span>
+          <span className={styles.titleMain}>Adventi Kalendárium</span>
+          <span className={styles.titleYear}>2025</span>
         </h1>
         <p className={styles.subtitle}>
-          Kattints egy napra, hogy megnyisd az ajándékot! 🎁
+          Kattints, hogy kibontsd a meglepetéseket! 🎁
         </p>
         <AdventCalendar />
       </div>
     </main>
   )
 }
+
+
 

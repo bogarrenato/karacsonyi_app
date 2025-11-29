@@ -7,24 +7,36 @@ interface AdventCardProps {
   day: AdventDay
   onClick: () => void
   isSpinning: boolean
+  isDisabled?: boolean
+  isViewed?: boolean
+  isCurrentDay?: boolean
 }
 
-export default function AdventCard({ day, onClick, isSpinning }: AdventCardProps) {
+export default function AdventCard({ 
+  day, 
+  onClick, 
+  isSpinning, 
+  isDisabled = false,
+  isViewed = false,
+  isCurrentDay = false
+}: AdventCardProps) {
+  const getDayNumberClass = () => {
+    if (isCurrentDay) return styles.dayNumberCurrent
+    if (isViewed) return styles.dayNumberViewed
+    return styles.dayNumber
+  }
+
   return (
     <div
-      className={`${styles.card} ${isSpinning ? styles.spinning : ''}`}
-      onClick={onClick}
+      className={`${styles.card} ${isSpinning ? styles.spinning : ''} ${isDisabled ? styles.disabled : ''}`}
+      onClick={isDisabled ? undefined : onClick}
     >
       <div className={styles.cardContent}>
         {day.icon && (
           <div className={styles.icon}>{day.icon}</div>
         )}
         <div className={styles.dayNumberContainer}>
-          <div className={styles.snowflake1}>❄</div>
-          <div className={styles.snowflake2}>❄</div>
-          <div className={styles.snowflake3}>❄</div>
-          <div className={styles.snowflake4}>❄</div>
-          <div className={styles.dayNumber}>{day.day}</div>
+          <div className={getDayNumberClass()}>{day.day}</div>
         </div>
       </div>
     </div>

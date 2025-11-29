@@ -29,6 +29,100 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 1024px) {
+  .envelopeContainer {
+    max-width: 800px;
+    padding: 2rem;
+  }
+
+  .envelope {
+    max-width: 750px;
+    height: auto;
+    min-height: 600px;
+    max-height: 85vh;
+  }
+
+  .letter {
+    padding: 2rem;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    max-height: calc(100% - 30px);
+  }
+
+  .letterContent {
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 1.5rem;
+  }
+
+  .letterTitle {
+    font-size: 2.2rem;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+
+  .letterText {
+    font-size: 1.3rem;
+    line-height: 1.7;
+  }
+
+  .imageContainer {
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .taskImage {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .task {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .link {
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .closeButton {
+    padding: 0.9rem 2.5rem;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .envelopeContainer {
+    max-width: 900px;
+  }
+
+  .envelope {
+    max-width: 850px;
+    min-height: 650px;
+  }
+
+  .taskImage {
+    max-height: 450px;
+  }
+}
+
 .envelopeContainer.show {
   transform: scale(1) translateY(0);
   opacity: 1;
@@ -59,14 +153,25 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
-  border-left: 200px solid transparent;
-  border-right: 200px solid transparent;
-  border-top: 200px solid #d32f2f;
-  transform-origin: bottom;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: bottom center;
   transition: transform 0.6s ease;
   z-index: 2;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.envelopeTop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .envelope.open .envelopeTop {
@@ -78,10 +183,11 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 200px;
+  height: 50%;
   background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
   border-radius: 0 0 8px 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .envelopeBody::before {
@@ -93,6 +199,16 @@
   width: 2px;
   height: 100%;
   background: rgba(255, 255, 255, 0.3);
+}
+
+.envelopeBody::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .envelopeBack {
@@ -126,6 +242,7 @@
   text-align: center;
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .letterContent {
@@ -135,6 +252,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding-bottom: 1rem;
+  min-height: 100%;
 }
 
 .letterTitle {
@@ -144,6 +263,13 @@
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .letterText {
@@ -152,6 +278,28 @@
   margin: 0;
   line-height: 1.6;
   word-wrap: break-word;
+}
+
+.imageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.taskImage {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 182, 193, 0.5);
+  object-fit: contain;
+  display: block;
 }
 
 .task {
@@ -190,7 +338,8 @@
 }
 
 .closeButton {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   padding: 0.75rem 2rem;
   background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
   color: white;
@@ -203,6 +352,8 @@
   box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
   width: auto;
   min-width: 120px;
+  flex-shrink: 0;
+  z-index: 10;
 }
 
 .closeButton:hover {
@@ -214,16 +365,125 @@
   transform: translateY(0);
 }
 
+/* Speciális popup a 2. naphoz (Mikulás) */
+.specialPopup {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  z-index: 10;
+  animation: popupAppear 0.5s ease-out 0.3s both;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes popupAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tinsel {
+  position: relative;
+  font-size: 2rem;
+  animation: sparkle 2s ease-in-out infinite;
+  z-index: 11;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: rotate(180deg) scale(1.2);
+  }
+}
+
+.elf {
+  position: relative;
+  font-size: 3rem;
+  z-index: 12;
+  animation: bounce 1s ease-in-out infinite;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.speechBubble {
+  position: relative;
+  background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 3px solid #ffd54f;
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.speechBubble::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #ffd54f;
+}
+
+.speechBubble::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #fff9c4;
+}
+
 @media (max-width: 768px) {
   .envelopeContainer {
-    max-width: 90%;
+    max-width: 95%;
     padding: 0.5rem;
+    max-height: 90vh;
   }
 
   .envelope {
     max-width: 100%;
     height: auto;
-    min-height: 320px;
+    min-height: 500px;
+    max-height: 85vh;
   }
 
   .envelopeTop {
@@ -237,47 +497,95 @@
   }
 
   .letter {
-    padding: 1rem;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
+    padding: 1.5rem;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    max-height: calc(100% - 20px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .letterContent {
+    gap: 1.2rem;
+    padding-bottom: 1.2rem;
   }
 
   .letterTitle {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.3;
+    padding: 0 0.5rem;
   }
 
   .letterText {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .imageContainer {
+    margin: 1.2rem 0;
+  }
+
+  .taskImage {
+    border-radius: 10px;
+    border-width: 2px;
   }
 
   .task {
-    padding: 0.75rem;
-    font-size: 0.9rem;
+    padding: 1rem;
+    font-size: 1rem;
   }
 
   .link {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
   }
 
   .closeButton {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .specialPopup {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .tinsel {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .elf {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .speechBubble {
+    margin-top: 0.5rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
 
 @media (max-width: 480px) {
   .envelopeContainer {
-    max-width: 95%;
-    padding: 0.5rem;
+    max-width: 98%;
+    padding: 0.25rem;
+    max-height: 95vh;
   }
 
   .envelope {
     max-width: 100%;
     height: auto;
-    min-height: 280px;
+    min-height: 600px;
+    max-height: 90vh;
   }
 
   .envelopeTop {
@@ -287,38 +595,86 @@
   }
 
   .letter {
-    padding: 0.75rem;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+    padding: 1.2rem;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    max-height: calc(100% - 16px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .letterContent {
+    gap: 1rem;
+    width: 100%;
+    padding-bottom: 1rem;
   }
 
   .letterTitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.3;
+    padding: 0 0.5rem;
   }
 
   .letterText {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .imageContainer {
+    margin: 1rem 0;
+  }
+
+  .taskImage {
+    border-radius: 8px;
+    border-width: 2px;
   }
 
   .task {
-    padding: 0.6rem;
-    font-size: 0.85rem;
+    padding: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .link {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.95rem;
     width: 100%;
     max-width: 100%;
   }
 
   .closeButton {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
     width: 100%;
     max-width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .specialPopup {
+    max-width: 100%;
+    margin-bottom: 1.2rem;
+  }
+
+  .tinsel {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .elf {
+    font-size: 2.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .speechBubble {
+    margin-top: 0.4rem;
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 }
 
