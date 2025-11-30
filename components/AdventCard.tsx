@@ -32,9 +32,25 @@ export default function AdventCard({
       onClick={isDisabled ? undefined : onClick}
     >
       <div className={styles.cardContent}>
-        {day.icon && (
+        {day.specialType === 'nutcracker' ? (
+          <div className={styles.nutcracker}>
+            <div className={styles.nutcrackerHat}>
+              <div className={styles.nutcrackerHatTop}></div>
+              <div className={styles.nutcrackerHatBase}></div>
+            </div>
+            <div className={styles.nutcrackerHead}>
+              <div className={styles.nutcrackerFace}>
+                <div className={styles.nutcrackerEye}></div>
+                <div className={styles.nutcrackerEye}></div>
+                <div className={styles.nutcrackerMouth}></div>
+              </div>
+              <div className={styles.nutcrackerBeard}></div>
+            </div>
+            <div className={styles.nutcrackerBody}></div>
+          </div>
+        ) : day.icon ? (
           <div className={styles.icon}>{day.icon}</div>
-        )}
+        ) : null}
         <div className={styles.dayNumberContainer}>
           <div className={getDayNumberClass()}>{day.day}</div>
         </div>

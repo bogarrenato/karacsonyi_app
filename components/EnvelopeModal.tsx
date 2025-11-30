@@ -93,7 +93,47 @@ export default function EnvelopeModal({ day, onClose }: EnvelopeModalProps) {
                     <strong>Feladat:</strong> {day.task}
                   </div>
                 )}
-                {day.link && (
+                {day.links && day.links.length > 0 ? (
+                  <div className={styles.linksContainer}>
+                    {day.links.map((linkItem, index) => (
+                      <div key={index} className={styles.linkItem}>
+                        <div className={styles.linkName}>
+                          {linkItem.name.split('+').map((name, i, arr) => {
+                            const trimmedName = name.trim();
+                            // Nagy kezdőbetű minden névhez, de a zárójelben lévő részt ne módosítsuk
+                            const parenIndex = trimmedName.indexOf('(');
+                            if (parenIndex > 0) {
+                              const namePart = trimmedName.substring(0, parenIndex).trim();
+                              const parenPart = trimmedName.substring(parenIndex);
+                              const capitalizedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+                              return (
+                                <span key={i}>
+                                  {capitalizedName + parenPart}
+                                  {i < arr.length - 1 && ' + '}
+                                </span>
+                              );
+                            }
+                            const capitalizedName = trimmedName.charAt(0).toUpperCase() + trimmedName.slice(1);
+                            return (
+                              <span key={i}>
+                                {capitalizedName}
+                                {i < arr.length - 1 && ' + '}
+                              </span>
+                            );
+                          })}
+                        </div>
+                        <a
+                          href={linkItem.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.link}
+                        >
+                          🔗 Kattints ide a linkhez
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                ) : day.link ? (
                   <a
                     href={day.link}
                     target="_blank"
@@ -102,7 +142,7 @@ export default function EnvelopeModal({ day, onClose }: EnvelopeModalProps) {
                   >
                     🔗 Kattints ide a linkhez
                   </a>
-                )}
+                ) : null}
                 <button className={styles.closeButton} onClick={handleClose}>
                   Bezárás
                 </button>

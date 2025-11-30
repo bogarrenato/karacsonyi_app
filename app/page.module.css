@@ -27,7 +27,7 @@
 }
 
 .titleMain {
-  font-family: 'Arial Black', sans-serif;
+  font-family: fantasy;
   font-size: 4rem;
   color: #4fd1c7;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -35,7 +35,7 @@
 }
 
 .titleYear {
-  font-family: 'Arial Black', sans-serif;
+  font-family: fantasy;
   font-size: 3.5rem;
   color: #ff6b9d;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -59,7 +59,7 @@
 
   .titleMain {
     font-size: 2.5rem;
-    font-family: sans-serif;
+    font-family: fantasy;
     font-weight: 900;
     text-align: center;
     width: 100%;
@@ -68,7 +68,7 @@
   
   .titleYear {
     font-size: 2rem;
-    font-family: sans-serif;
+    font-family: fantasy;
     font-weight: 900;
     text-align: center;
     width: 100%;
@@ -94,7 +94,7 @@
 
   .titleMain {
     font-size: 2rem;
-    font-family: sans-serif;
+    font-family: fantasy;
     font-weight: 900;
     text-align: center;
     width: 100%;
@@ -103,7 +103,7 @@
   
   .titleYear {
     font-size: 1.75rem;
-    font-family: sans-serif;
+    font-family: fantasy;
     font-weight: 900;
     text-align: center;
     width: 100%;

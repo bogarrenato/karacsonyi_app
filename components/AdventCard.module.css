@@ -45,6 +45,176 @@
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
 }
 
+/* Diótörő figura */
+.nutcracker {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 140px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: nutcrackerBounce 3s ease-in-out infinite;
+}
+
+@keyframes nutcrackerBounce {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-5px);
+  }
+}
+
+/* Diótörő sapka */
+.nutcrackerHat {
+  position: relative;
+  width: 65px;
+  height: 50px;
+  z-index: 3;
+}
+
+.nutcrackerHatTop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 30px solid #c62828;
+}
+
+.nutcrackerHatBase {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #c62828;
+  border-radius: 50px 50px 0 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.nutcrackerHatBase::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #ffd700;
+  border-radius: 0 0 50px 50px;
+}
+
+/* Diótörő fej */
+.nutcrackerHead {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  background: #ffe0b2;
+  border-radius: 50%;
+  margin-top: -3px;
+  z-index: 2;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Diótörő arc */
+.nutcrackerFace {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.nutcrackerEye {
+  width: 5px;
+  height: 5px;
+  background: #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 18px;
+}
+
+.nutcrackerEye:first-of-type {
+  left: 18px;
+}
+
+.nutcrackerEye:last-of-type {
+  right: 18px;
+}
+
+.nutcrackerMouth {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 8px;
+  border: 2px solid #333;
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Diótörő szakáll */
+.nutcrackerBeard {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 30px;
+  background: white;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Diótörő test - katonai egyenruha */
+.nutcrackerBody {
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+  border-radius: 12px 12px 6px 6px;
+  margin-top: -15px;
+  z-index: 1;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.nutcrackerBody::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 25px;
+  background: #ffd700;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nutcrackerBody::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: #c62828;
+  border-radius: 2px;
+}
+
 .dayNumberContainer {
   position: absolute;
   bottom: -8px;
@@ -149,6 +319,32 @@
     font-size: 5rem;
     top: 32%;
   }
+
+  .nutcracker {
+    width: 70px;
+    height: 120px;
+  }
+
+  .nutcrackerHat {
+    width: 55px;
+    height: 42px;
+  }
+
+  .nutcrackerHatTop {
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 25px;
+  }
+
+  .nutcrackerHead {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nutcrackerBody {
+    width: 50px;
+    height: 42px;
+  }
   
   .dayNumberContainer {
     width: 70px;
@@ -174,6 +370,32 @@
     font-size: 4.5rem;
     top: 30%;
   }
+
+  .nutcracker {
+    width: 60px;
+    height: 100px;
+  }
+
+  .nutcrackerHat {
+    width: 48px;
+    height: 36px;
+  }
+
+  .nutcrackerHatTop {
+    border-left-width: 7px;
+    border-right-width: 7px;
+    border-bottom-width: 22px;
+  }
+
+  .nutcrackerHead {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nutcrackerBody {
+    width: 45px;
+    height: 36px;
+  }
   
   .dayNumberContainer {
     width: 60px;
@@ -198,6 +420,58 @@
   .icon {
     font-size: 4.5rem;
     top: 42%;
+  }
+
+  .nutcracker {
+    width: 55px;
+    height: 90px;
+  }
+
+  .nutcrackerHat {
+    width: 42px;
+    height: 32px;
+  }
+
+  .nutcrackerHatTop {
+    border-left-width: 6px;
+    border-right-width: 6px;
+    border-bottom-width: 20px;
+  }
+
+  .nutcrackerHead {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nutcrackerBody {
+    width: 40px;
+    height: 32px;
+  }
+
+  .nutcrackerEye {
+    width: 4px;
+    height: 4px;
+  }
+
+  .nutcrackerEye:first-of-type {
+    left: 15px;
+    top: 15px;
+  }
+
+  .nutcrackerEye:last-of-type {
+    right: 15px;
+    top: 15px;
+  }
+
+  .nutcrackerMouth {
+    width: 16px;
+    height: 6px;
+    top: 24px;
+  }
+
+  .nutcrackerBeard {
+    width: 42px;
+    height: 25px;
   }
   
   .dayNumberContainer {
