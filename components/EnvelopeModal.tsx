@@ -52,8 +52,25 @@ export default function EnvelopeModal({ day, onClose }: EnvelopeModalProps) {
             <div className={styles.letter}>
               {day.specialType === 'letter' && (
                 <div className={styles.specialPopup}>
-                  <div className={styles.tinsel}>✨</div>
-                  <div className={styles.elf}>🧝</div>
+                  <div className={styles.elf}>
+                    <div className={styles.elfHat}>
+                      <div className={styles.elfHatTop}></div>
+                      <div className={styles.elfHatBase}></div>
+                      <div className={styles.elfHatPom}></div>
+                    </div>
+                    <div className={styles.elfHead}>
+                      <div className={styles.elfFace}>
+                        <div className={styles.elfEye}></div>
+                        <div className={styles.elfEye}></div>
+                        <div className={styles.elfNose}></div>
+                        <div className={styles.elfMouth}></div>
+                        <div className={styles.elfEar}></div>
+                        <div className={styles.elfEar}></div>
+                      </div>
+                    </div>
+                    <div className={styles.elfBody}></div>
+                    <div className={styles.elfArms}></div>
+                  </div>
                   <div className={styles.speechBubble}>
                     Vigyázz, a rossz gyerekek egy zsák szenet és virgácsot kapnak!
                   </div>

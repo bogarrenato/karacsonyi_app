@@ -377,7 +377,7 @@
   transform: translateY(0);
 }
 
-/* Speciális popup a 2. naphoz (Mikulás) */
+/* Speciális popup a 2. naphoz (Manó) */
 .specialPopup {
   position: relative;
   width: 100%;
@@ -402,42 +402,255 @@
   }
 }
 
-.tinsel {
-  position: relative;
-  font-size: 2rem;
-  animation: sparkle 2s ease-in-out infinite;
-  z-index: 11;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: rotate(180deg) scale(1.2);
-  }
-}
-
+/* Karácsonyi manó figura */
 .elf {
   position: relative;
-  font-size: 3rem;
+  width: 90px;
+  height: 140px;
+  margin: 0 auto 1rem;
   z-index: 12;
-  animation: bounce 1s ease-in-out infinite;
-  margin-bottom: 0.5rem;
-  display: block;
+  animation: elfBounce 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes bounce {
+@keyframes elfBounce {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+
+/* Manó csúcsos sapka */
+.elfHat {
+  position: relative;
+  width: 70px;
+  height: 50px;
+  z-index: 3;
+}
+
+.elfHatTop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 35px solid #2e7d32;
+  animation: hatWiggle 3s ease-in-out infinite;
+}
+
+@keyframes hatWiggle {
+  0%, 100% {
+    transform: translateX(-50%) rotate(0deg);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateX(-50%) rotate(-3deg);
   }
+}
+
+.elfHatBase {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #2e7d32;
+  border-radius: 50px 50px 0 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.elfHatBase::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #fff;
+  border-radius: 0 0 50px 50px;
+}
+
+.elfHatPom {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pomBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes pomBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+/* Manó fej */
+.elfHead {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: #ffe0b2;
+  border-radius: 50%;
+  margin-top: -3px;
+  z-index: 2;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Manó arc */
+.elfFace {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.elfEye {
+  width: 6px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  animation: blink 3s ease-in-out infinite;
+}
+
+.elfEye:first-of-type {
+  left: 20px;
+}
+
+.elfEye:last-of-type {
+  right: 20px;
+}
+
+@keyframes blink {
+  0%, 90%, 100% {
+    height: 6px;
+  }
+  95% {
+    height: 1px;
+  }
+}
+
+.elfNose {
+  width: 8px;
+  height: 7px;
+  background: #ff8a65;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.elfMouth {
+  width: 16px;
+  height: 8px;
+  border: 2px solid #333;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Manó csúcsos fülek */
+.elfEar {
+  position: absolute;
+  width: 12px;
+  height: 16px;
+  background: #ffe0b2;
+  border-radius: 50% 0 50% 50%;
+  top: 15px;
+  z-index: 1;
+}
+
+.elfEar:first-of-type {
+  left: -8px;
+  transform: rotate(-20deg);
+}
+
+.elfEar:last-of-type {
+  right: -8px;
+  transform: rotate(20deg) scaleX(-1);
+}
+
+/* Manó test - zöld ruha */
+.elfBody {
+  width: 70px;
+  height: 50px;
+  background: #2e7d32;
+  border-radius: 15px 15px 8px 8px;
+  margin-top: -15px;
+  z-index: 1;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.elfBody::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Manó karok */
+.elfArms {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  z-index: 0;
+}
+
+.elfArms::before,
+.elfArms::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 35px;
+  background: #2e7d32;
+  border-radius: 9px;
+  top: 0;
+}
+
+.elfArms::before {
+  left: -5px;
+  transform: rotate(-25deg);
+}
+
+.elfArms::after {
+  right: -5px;
+  transform: rotate(25deg);
 }
 
 .speechBubble {
@@ -566,14 +779,36 @@
     margin-bottom: 1.5rem;
   }
 
-  .tinsel {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+  .elf {
+    width: 80px;
+    height: 120px;
+    margin-bottom: 0.8rem;
   }
 
-  .elf {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+  .elfHat {
+    width: 60px;
+    height: 45px;
+  }
+
+  .elfHatTop {
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 30px;
+  }
+
+  .elfHead {
+    width: 55px;
+    height: 55px;
+  }
+
+  .elfBody {
+    width: 60px;
+    height: 45px;
+  }
+
+  .elfArms {
+    width: 70px;
+    bottom: 40px;
   }
 
   .speechBubble {
@@ -668,14 +903,80 @@
     margin-bottom: 1.2rem;
   }
 
-  .tinsel {
-    font-size: 1.8rem;
-    margin-bottom: 0.4rem;
+  .elf {
+    width: 75px;
+    height: 110px;
+    margin-bottom: 0.6rem;
   }
 
-  .elf {
-    font-size: 2.5rem;
-    margin-bottom: 0.4rem;
+  .elfHat {
+    width: 55px;
+    height: 40px;
+  }
+
+  .elfHatTop {
+    border-left-width: 9px;
+    border-right-width: 9px;
+    border-bottom-width: 28px;
+  }
+
+  .elfHatPom {
+    width: 10px;
+    height: 10px;
+    top: -6px;
+  }
+
+  .elfHead {
+    width: 50px;
+    height: 50px;
+  }
+
+  .elfBody {
+    width: 55px;
+    height: 40px;
+  }
+
+  .elfArms {
+    width: 65px;
+    bottom: 35px;
+  }
+
+  .elfArms::before,
+  .elfArms::after {
+    width: 16px;
+    height: 30px;
+  }
+
+  .elfEye {
+    width: 5px;
+    height: 5px;
+  }
+
+  .elfEye:first-of-type {
+    left: 18px;
+    top: 18px;
+  }
+
+  .elfEye:last-of-type {
+    right: 18px;
+    top: 18px;
+  }
+
+  .elfNose {
+    width: 7px;
+    height: 6px;
+    top: 25px;
+  }
+
+  .elfMouth {
+    width: 14px;
+    height: 7px;
+    top: 32px;
+  }
+
+  .elfEar {
+    width: 10px;
+    height: 14px;
   }
 
   .speechBubble {
