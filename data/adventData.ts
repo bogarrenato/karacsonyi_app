@@ -128,7 +128,7 @@ export const adventData: AdventDay[] = [
   {
     day: 14,
     title: "",
-    content: "Ez a nap még nincs kész. Hamarosan érkezik!",
+    content: "",
     task: "DIY! Készítsetek valamit karácsonyra (ne én találjak ki mindent 😄)!",
     icon: "✂️",
   },
@@ -150,10 +150,10 @@ export const adventData: AdventDay[] = [
   {
     day: 17,
     title: "",
-    content:
-      "Ez a nap még nincs kész. Hamarosan érkezik! (Új családi képeslapokból)",
-    task: "Várj türelemmel...",
-    icon: "🧩",
+    content: "",
+    task: "Töltsd ki a karácsonyi filmekhez kapcsolódó kvízt!",
+    link: "https://www.youtube.com/watch?v=mm0Jmn4zrFY",
+    icon: "❓",
   },
   {
     day: 18,
@@ -196,8 +196,8 @@ export const adventData: AdventDay[] = [
     day: 23,
     title: "",
     content: "",
-    task: "Töltsd ki a kvízt!",
-    icon: "❓",
+    task: "Rajzold le a kéményben ragadt Mikulást csukott szemmel vagy ellentétes kézzel!",
+    icon: "🎨",
   },
   {
     day: 24,

@@ -10,7 +10,7 @@ import styles from './AdventCalendar.module.css'
 const TEST_MODE = false // Teszteléshez állítsd true-ra
 const TEST_MONTH = 11 // November
 const TEST_DAY = 15 // 15. nap
-const DISABLE_DATE_RESTRICTION = true // Ha true, akkor minden nap elérhető
+const DISABLE_DATE_RESTRICTION = false // Ha true, akkor minden nap elérhető
 
 export default function AdventCalendar() {
   const [selectedDay, setSelectedDay] = useState<AdventDay | null>(null)
